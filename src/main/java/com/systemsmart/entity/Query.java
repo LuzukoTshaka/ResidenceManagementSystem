@@ -10,19 +10,19 @@ import java.util.Objects;
     Date: 05 July 2020
 */
 @Entity
-public class Complaint implements Serializable {
+public class Query implements Serializable {
     @Id
-    private String complaintID;
+    private String queryId;
     private String nature;
     private String description;
     private String logStatus;
     private String response;
 
     //constructor
-    protected Complaint(){}
+    protected Query(){}
 
-    public Complaint(Builder builder) {
-        this.complaintID = builder.complaintID;
+    public Query(Builder builder) {
+        this.queryId = builder.queryId;
         this.nature = builder.nature;
         this.description = builder.description;
         this.logStatus = builder.logStatus;
@@ -30,8 +30,8 @@ public class Complaint implements Serializable {
     }
 
     //Getters
-    public String getComplaintID() {
-        return complaintID;
+    public String getQueryId() {
+        return queryId;
     }
     public String getNature() {
         return nature;
@@ -48,8 +48,8 @@ public class Complaint implements Serializable {
 
     @Override
     public String toString() {
-        return "Complaint{" +
-                "complaintID=" + complaintID +
+        return "Query{" +
+                "queryId='" + queryId + '\'' +
                 ", nature='" + nature + '\'' +
                 ", description='" + description + '\'' +
                 ", logStatus='" + logStatus + '\'' +
@@ -59,14 +59,14 @@ public class Complaint implements Serializable {
 
     //Builder
     public static class Builder{
-        private String complaintID;
+        private String queryId;
         private String nature;
         private String description;
         private String logStatus;
         private String response;
 
-        public Builder setComplaintID(String complaintID) {
-            this.complaintID = complaintID;
+        public Builder setQueryId(String queryId) {
+            this.queryId = queryId;
             return this;
         }
         public Builder setNature(String nature) {
@@ -86,9 +86,9 @@ public class Complaint implements Serializable {
             return this;
         }
 
-        public Builder copy(Complaint c){
+        public Builder copy(Query c){
 
-            this.complaintID = c.complaintID;
+            this.queryId = c.queryId;
             this.nature = c.nature;
             this.description = c.description;
             this.logStatus = c.logStatus;
@@ -97,8 +97,8 @@ public class Complaint implements Serializable {
             return this;
         }
 
-        public Complaint build(){
-            return new Complaint(this);
+        public Query build(){
+            return new Query(this);
         }
     }
 
@@ -106,12 +106,12 @@ public class Complaint implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Complaint complaint = (Complaint) o;
-        return complaintID == complaint.complaintID;
+        Query query = (Query) o;
+        return queryId == query.queryId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(complaintID);
+        return Objects.hash(queryId);
     }
 }
