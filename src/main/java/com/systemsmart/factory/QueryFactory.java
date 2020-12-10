@@ -1,7 +1,10 @@
 package com.systemsmart.factory;
 
 import com.systemsmart.entity.Query;
+import com.systemsmart.entity.Residence;
 import com.systemsmart.util.StringHelper;
+
+import java.util.UUID;
 
 /*  Author: Christ Kitenge Mbuyi <217248756@mycput.ac.za>
     Description: This class instantiates the Complaint object
@@ -9,18 +12,15 @@ import com.systemsmart.util.StringHelper;
 */
 
 public class QueryFactory {
-
-    public static Query logQuery(String nature, String description, String logStatus, String response){
-
-        Query c = new Query.Builder()
-                .setQueryId(StringHelper.generateRandom())
+    public static Query createQuery(String queryId, String nature, String fullName, String studNum, String description, String logStatus, String response){
+        return new Query.Builder()
+                .setQueryId(UUID.randomUUID().toString())
                 .setNature(nature)
+                .setFullName(fullName)
+                .setStudNum(studNum)
                 .setDescription(description)
                 .setLogStatus(logStatus)
                 .setResponse(response)
                 .build();
-
-        return c;
-
     }
 }
